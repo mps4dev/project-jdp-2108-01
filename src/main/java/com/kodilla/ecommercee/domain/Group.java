@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Group {
     @Column(name = "ID")
     private long id;
 
+    @NotNull
     @Column(name = "NAME")
     private String name;
 
