@@ -1,23 +1,16 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Entity(name = "PRODUCTS")
+@Entity
 public class Product {
 
     @Id
-    @GeneratedValue
-    @Column(name = "ID")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "GROUP_ID")
     private Group group;
 }
