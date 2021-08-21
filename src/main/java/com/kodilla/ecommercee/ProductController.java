@@ -20,11 +20,13 @@ public class ProductController {
         return new ProductDto();
     }
 
-    @PostMapping("/{productDto}")
-    public void create(@PathVariable ProductDto productDto){}
+    @PostMapping
+    public ProductDto create(@RequestBody ProductDto productDto){
+        return new ProductDto();
+    }
 
-    @PutMapping("/{productDto}")
-    public ProductDto update(@PathVariable ProductDto productDto){
+    @PutMapping
+    public ProductDto update(@RequestBody ProductDto productDto){
         return new ProductDto();
     }
 
