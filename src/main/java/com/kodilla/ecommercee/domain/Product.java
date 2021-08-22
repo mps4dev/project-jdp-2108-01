@@ -15,7 +15,6 @@ public class Product {
 
     @Id
     @GeneratedValue
-    @NotNull
     private long id;
 
     @ManyToOne
@@ -29,7 +28,7 @@ public class Product {
     private String description;
 
     @NotNull
-    private int value;
+    private int price;
 
 
 }
