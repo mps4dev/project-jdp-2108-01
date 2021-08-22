@@ -16,7 +16,6 @@ public class Product {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ID",unique = true)
     private long id;
 
     @ManyToOne
@@ -25,14 +24,12 @@ public class Product {
     private Group group;
 
     @NotNull
-    @Column(name = "NAME")
     private String name;
 
-    @NotNull
-    @Column(name = "QUANTITY")
-    private int quantity;
+    private String description;
 
     @NotNull
-    @Column(name = "AVAILABILITY")
-    private boolean availability;
+    private int value;
+
+
 }
