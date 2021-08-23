@@ -23,7 +23,7 @@ public class CartController {
         return new CartDto();
     }
 
-    @GetMapping("/order")
+    @PostMapping("/order")
     public OrderDto order(@RequestBody CartDto cartDto) {
         return new OrderDto();
     }
