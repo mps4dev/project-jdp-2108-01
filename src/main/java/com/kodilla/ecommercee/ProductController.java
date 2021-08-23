@@ -1,6 +1,6 @@
 package com.kodilla.ecommercee;
 
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.dto.ProductDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class ProductController {
         return new ArrayList<>();
     }
 
-    @GetMapping({"/{id}"})
+    @GetMapping("/{id}")
     public ProductDto get(@PathVariable Long id){
         return new ProductDto();
     }
