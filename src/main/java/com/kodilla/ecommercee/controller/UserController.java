@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.UserDto;
+import com.kodilla.ecommercee.dto.UserKeyDto;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -13,14 +14,14 @@ public class UserController {
         return userDto;
     }
 
-    @PutMapping
-    public UserDto block(@RequestBody UserDto userDto) {
-        return userDto;
+    @PutMapping("/{id}")
+    public void block(@PathVariable Long id) {
+
     }
 
     @PutMapping
-    public UserDto generateKey(@RequestBody UserDto userDto) {
-        return userDto;
+    public UserKeyDto generateKey(@RequestBody UserKeyDto userKeyDto) {
+        return userKeyDto;
     }
 
 
