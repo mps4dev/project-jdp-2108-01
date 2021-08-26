@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @PutMapping("/generate/{id}")
-    public UserKeyDto generateKey(@PathVariable Long id, @RequestBody UserKeyDto userKeyDto) {
-        return userKeyDto;
+    public UserKeyDto generateKey(@PathVariable Long id) {
+        return new UserKeyDto();
     }
 }
