@@ -13,11 +13,11 @@ public class UserController {
         return userDto;
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/block/{id}")
     public void block(@PathVariable Long id) {
 
     }
-    @PutMapping("/{id}")
+    @PutMapping("/generate/{id}")
     public void generateKey(@PathVariable Long id) {
 
     }
