@@ -18,9 +18,9 @@ public class UserController {
 
     }
     @PutMapping("/generate/{id}")
-    public void generateKey(@PathVariable Long id) {
+    public UserKeyDto generateKey(@PathVariable Long id) {
+        return new UserKeyDto();
 
     }
-
 
 }
