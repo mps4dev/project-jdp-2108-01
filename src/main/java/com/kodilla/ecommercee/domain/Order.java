@@ -29,5 +29,4 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "CART_ID")
     private Cart cart;
-
 }
