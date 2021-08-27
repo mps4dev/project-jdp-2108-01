@@ -39,6 +39,6 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-    }
 
+    }
 }
