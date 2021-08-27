@@ -8,5 +8,4 @@ public class User {
 
     @Id
     private long id;
-
 }
