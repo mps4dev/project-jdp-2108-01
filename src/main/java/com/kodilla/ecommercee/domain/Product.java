@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "PRODUCTS")
+@Entity(name = "products")
 public class Product {
 
     @Id
@@ -23,7 +23,7 @@ public class Product {
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "GROUP_ID")
+    @JoinColumn(name = "group_id")
     private Group group;
 
     @NotNull

@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "ORDERS")
+@Entity(name = "orders")
 public class Order {
 
     @Id
@@ -23,10 +23,10 @@ public class Order {
     private long id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToOne
-    @JoinColumn(name = "CART_ID")
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 }
