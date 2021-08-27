@@ -36,20 +36,20 @@ public class GroupService {
     @Transactional
     public GroupDto create(final GroupDto groupDto) throws CreatingObjectWithIdException {
         if (groupDto.getId() != 0) throw new CreatingObjectWithIdException();
-        return saveAndReturn(groupDto);
+        return saveAndMapToDto(groupDto);
     }
 
     @Transactional
     public GroupDto update(final GroupDto groupDto) throws NoSuchIdException {
         Optional<Group> group = repository.findById(groupDto.getId());
         if (group.isPresent()) {
-            return saveAndReturn(groupDto);
+            return saveAndMapToDto(groupDto);
         } else {
             throw new NoSuchIdException();
         }
     }
 
-    private GroupDto saveAndReturn(final GroupDto groupDto) {
+    private GroupDto saveAndMapToDto(final GroupDto groupDto) {
         Group group = repository.save(mapper.mapToGroup(groupDto));
         return mapper.mapToDto(group);
     }
