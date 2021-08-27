@@ -36,7 +36,7 @@ public class CartController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
 
     }
 }
