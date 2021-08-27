@@ -8,6 +8,7 @@ import com.kodilla.ecommercee.mapper.GroupMapper;
 import com.kodilla.ecommercee.repository.GroupRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,11 +33,13 @@ public class GroupService {
         }
     }
 
+    @Transactional
     public GroupDto create(final GroupDto groupDto) throws ObjectAlreadyExistsException {
         if (groupDto.getId() != 0) throw new ObjectAlreadyExistsException();
         return saveAndReturn(groupDto);
     }
 
+    @Transactional
     public GroupDto update(final GroupDto groupDto) throws BadIdException {
         if (groupDto.getId() == 0) throw new BadIdException();
         return saveAndReturn(groupDto);
@@ -47,6 +50,7 @@ public class GroupService {
         return mapper.mapToDto(group);
     }
 
+    @Transactional
     public void delete(final long id) {
         repository.deleteById(id);
     }
