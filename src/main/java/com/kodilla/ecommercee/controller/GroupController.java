@@ -37,8 +37,8 @@ public class GroupController {
         return groupDto;
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody GroupDto groupDto) {
+    @DeleteMapping("/{groupId}")
+    public void delete(@PathVariable long groupId) {
 
     }
 }
