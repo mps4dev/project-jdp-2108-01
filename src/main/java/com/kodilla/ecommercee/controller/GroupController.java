@@ -1,7 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.GroupDto;
-import com.kodilla.ecommercee.exception.BadIdException;
+import com.kodilla.ecommercee.exception.NoSuchIdException;
 import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.service.GroupService;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class GroupController {
     }
 
     @GetMapping("/{id}")
-    public GroupDto get(@PathVariable long id) throws BadIdException {
+    public GroupDto get(@PathVariable long id) throws NoSuchIdException {
         return service.getById(id);
     }
 
@@ -39,7 +39,7 @@ public class GroupController {
     }
 
     @PutMapping
-    public GroupDto update(@RequestBody GroupDto groupDto) throws BadIdException {
+    public GroupDto update(@RequestBody GroupDto groupDto) throws NoSuchIdException {
         return service.update(groupDto);
     }
 

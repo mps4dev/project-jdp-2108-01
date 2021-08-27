@@ -2,7 +2,7 @@ package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.dto.GroupDto;
-import com.kodilla.ecommercee.exception.BadIdException;
+import com.kodilla.ecommercee.exception.NoSuchIdException;
 import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.mapper.GroupMapper;
 import com.kodilla.ecommercee.repository.GroupRepository;
@@ -24,12 +24,12 @@ public class GroupService {
         return mapper.mapToDtoList(repository.findAll());
     }
 
-    public GroupDto getById(final long id) throws BadIdException {
+    public GroupDto getById(final long id) throws NoSuchIdException {
         Optional<Group> group = repository.findById(id);
         if (group.isPresent()) {
             return mapper.mapToDto(group.get());
         } else {
-            throw new BadIdException();
+            throw new NoSuchIdException();
         }
     }
 
@@ -40,8 +40,8 @@ public class GroupService {
     }
 
     @Transactional
-    public GroupDto update(final GroupDto groupDto) throws BadIdException {
-        if (groupDto.getId() == 0) throw new BadIdException();
+    public GroupDto update(final GroupDto groupDto) throws NoSuchIdException {
+        if (groupDto.getId() == 0) throw new NoSuchIdException();
         return saveAndReturn(groupDto);
     }
 
