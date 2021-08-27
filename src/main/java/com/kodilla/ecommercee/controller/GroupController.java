@@ -2,7 +2,7 @@ package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.GroupDto;
 import com.kodilla.ecommercee.exception.BadIdException;
-import com.kodilla.ecommercee.exception.ObjectAlreadyExistsException;
+import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.service.GroupService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,7 +34,7 @@ public class GroupController {
     }
 
     @PostMapping
-    public GroupDto create(@RequestBody GroupDto groupDto) throws ObjectAlreadyExistsException {
+    public GroupDto create(@RequestBody GroupDto groupDto) throws CreatingObjectWithIdException {
         return service.create(groupDto);
     }
 

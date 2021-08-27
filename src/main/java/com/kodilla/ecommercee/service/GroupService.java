@@ -3,7 +3,7 @@ package com.kodilla.ecommercee.service;
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.dto.GroupDto;
 import com.kodilla.ecommercee.exception.BadIdException;
-import com.kodilla.ecommercee.exception.ObjectAlreadyExistsException;
+import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.mapper.GroupMapper;
 import com.kodilla.ecommercee.repository.GroupRepository;
 import lombok.AllArgsConstructor;
@@ -34,8 +34,8 @@ public class GroupService {
     }
 
     @Transactional
-    public GroupDto create(final GroupDto groupDto) throws ObjectAlreadyExistsException {
-        if (groupDto.getId() != 0) throw new ObjectAlreadyExistsException();
+    public GroupDto create(final GroupDto groupDto) throws CreatingObjectWithIdException {
+        if (groupDto.getId() != 0) throw new CreatingObjectWithIdException();
         return saveAndReturn(groupDto);
     }
 
