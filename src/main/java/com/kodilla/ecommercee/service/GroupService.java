@@ -41,8 +41,12 @@ public class GroupService {
 
     @Transactional
     public GroupDto update(final GroupDto groupDto) throws NoSuchIdException {
-        if (groupDto.getId() == 0) throw new NoSuchIdException();
-        return saveAndReturn(groupDto);
+        Optional<Group> group = repository.findById(groupDto.getId());
+        if(group.isPresent()) {
+            return saveAndReturn(groupDto);
+        } else {
+            throw new NoSuchIdException();
+        }
     }
 
     private GroupDto saveAndReturn(final GroupDto groupDto) {
