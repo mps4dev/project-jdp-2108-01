@@ -55,7 +55,12 @@ public class GroupService {
     }
 
     @Transactional
-    public void delete(final long id) {
-        repository.deleteById(id);
+    public void delete(final long id) throws NoSuchIdException {
+        Optional<Group> group = repository.findById(id);
+        if (group.isPresent()) {
+            repository.deleteById(id);
+        } else {
+            throw new NoSuchIdException();
+        }
     }
 }

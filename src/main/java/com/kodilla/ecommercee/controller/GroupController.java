@@ -44,7 +44,7 @@ public class GroupController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    public void delete(@PathVariable long id) throws NoSuchIdException {
         service.delete(id);
     }
 }
