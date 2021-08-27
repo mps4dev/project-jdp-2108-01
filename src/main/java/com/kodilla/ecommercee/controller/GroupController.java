@@ -22,8 +22,8 @@ public class GroupController {
         return new ArrayList<>();
     }
 
-    @GetMapping("/{groupId}")
-    public GroupDto get(@PathVariable Long groupId) {
+    @GetMapping("/{id}")
+    public GroupDto get(@PathVariable Long id) {
         return new GroupDto();
     }
 
@@ -37,8 +37,8 @@ public class GroupController {
         return groupDto;
     }
 
-    @DeleteMapping("/{groupId}")
-    public void delete(@PathVariable long groupId) {
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
 
     }
 }
