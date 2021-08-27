@@ -23,7 +23,7 @@ public class GroupController {
     }
 
     @GetMapping("/{id}")
-    public GroupDto get(@PathVariable Long id) {
+    public GroupDto get(@PathVariable long id) {
         return new GroupDto();
     }
 

@@ -23,12 +23,12 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public OrderDto get(@PathVariable Long id) {
+    public OrderDto get(@PathVariable long id) {
         return new OrderDto();
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable long id) {
 
     }
 

@@ -21,7 +21,7 @@ public class CartController {
     }
 
     @GetMapping("/{id}")
-    public CartDto get(@PathVariable Long id) {
+    public CartDto get(@PathVariable long id) {
         return new CartDto();
     }
 
@@ -36,7 +36,7 @@ public class CartController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable long id) {
 
     }
 }

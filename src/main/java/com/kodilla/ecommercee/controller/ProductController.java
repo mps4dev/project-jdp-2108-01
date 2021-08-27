@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ProductDto get(@PathVariable Long id) {
+    public ProductDto get(@PathVariable long id) {
         return new ProductDto();
     }
 
@@ -38,7 +38,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable long id) {
 
     }
 }
