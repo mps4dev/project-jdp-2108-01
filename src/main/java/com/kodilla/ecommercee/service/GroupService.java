@@ -2,8 +2,8 @@ package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.dto.GroupDto;
-import com.kodilla.ecommercee.exception.NoSuchIdException;
 import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
+import com.kodilla.ecommercee.exception.NoSuchIdException;
 import com.kodilla.ecommercee.mapper.GroupMapper;
 import com.kodilla.ecommercee.repository.GroupRepository;
 import lombok.AllArgsConstructor;
@@ -42,7 +42,7 @@ public class GroupService {
     @Transactional
     public GroupDto update(final GroupDto groupDto) throws NoSuchIdException {
         Optional<Group> group = repository.findById(groupDto.getId());
-        if(group.isPresent()) {
+        if (group.isPresent()) {
             return saveAndReturn(groupDto);
         } else {
             throw new NoSuchIdException();
