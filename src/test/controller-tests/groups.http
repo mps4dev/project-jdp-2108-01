@@ -1,0 +1,35 @@
+# curl -i http://localhost:8080/v1/group/1
+DELETE http://localhost:8080/v1/group/1
+
+###
+
+# curl -i http://localhost:8080/v1/group
+PUT http://localhost:8080/v1/group
+
+<> 2021-08-28T003418.400.json
+
+###
+
+# curl -i http://localhost:8080/v1/group
+POST http://localhost:8080/v1/group
+
+<> 2021-08-28T003353.400.json
+
+###
+
+# curl -i http://localhost:8080/v1/group/1
+GET http://localhost:8080/v1/group/1
+
+<> 2021-08-28T003322.406.json
+
+###
+
+# curl -i http://localhost:8080/v1/group
+GET http://localhost:8080/v1/group
+
+<> 2021-08-28T003244.200.json
+###
+
+
+
+
