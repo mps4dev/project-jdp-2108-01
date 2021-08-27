@@ -33,11 +33,6 @@ public class GroupService {
         }
     }
 
-    private GroupDto saveAndReturn(final GroupDto groupDto) {
-        Group group = repository.save(mapper.mapToGroup(groupDto));
-        return mapper.mapToDto(group);
-    }
-
     @Transactional
     public GroupDto create(final GroupDto groupDto) throws CreatingObjectWithIdException {
         if (groupDto.getId() != 0) throw new CreatingObjectWithIdException();
@@ -52,6 +47,11 @@ public class GroupService {
         } else {
             throw new NoSuchIdException();
         }
+    }
+
+    private GroupDto saveAndReturn(final GroupDto groupDto) {
+        Group group = repository.save(mapper.mapToGroup(groupDto));
+        return mapper.mapToDto(group);
     }
 
     @Transactional
