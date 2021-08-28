@@ -26,12 +26,12 @@ public class Cart {
     private long id;
 
     @OneToMany(
-            targetEntity = OrderItem.class,
+            targetEntity = Product.class,
             mappedBy = "cart",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<OrderItem> items = new ArrayList<>();
+    private List<Product> items = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "ORDER_ID")
