@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderItem {
+public class Product {
 
     @Id
     private long id;
