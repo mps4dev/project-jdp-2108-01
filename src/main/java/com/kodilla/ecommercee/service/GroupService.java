@@ -25,12 +25,7 @@ public class GroupService {
     }
 
     public GroupDto getById(final long id) throws NoSuchIdException {
-        Optional<Group> group = repository.findById(id);
-        if (group.isPresent()) {
-            return mapper.mapToDto(group.get());
-        } else {
-            throw new NoSuchIdException();
-        }
+        return repository.findById(id).map(mapper::mapToDto).orElseThrow(NoSuchIdException::new);
     }
 
     @Transactional
@@ -41,8 +36,8 @@ public class GroupService {
 
     @Transactional
     public GroupDto update(final GroupDto groupDto) throws NoSuchIdException {
-        Optional<Group> group = repository.findById(groupDto.getId());
-        if (group.isPresent()) {
+        boolean isPresent = repository.findById(groupDto.getId()).isPresent();
+        if (isPresent) {
             return saveAndMapToDto(groupDto);
         } else {
             throw new NoSuchIdException();
@@ -56,8 +51,8 @@ public class GroupService {
 
     @Transactional
     public void delete(final long id) throws NoSuchIdException {
-        Optional<Group> group = repository.findById(id);
-        if (group.isPresent()) {
+        boolean isPresent = repository.findById(id).isPresent();
+        if (isPresent) {
             repository.deleteById(id);
         } else {
             throw new NoSuchIdException();
