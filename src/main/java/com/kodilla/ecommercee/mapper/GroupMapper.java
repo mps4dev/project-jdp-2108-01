@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GroupMapper {
+public class GroupMapper extends EntityMapper<Group, GroupDto> {
 
-    public Group mapToGroup(final GroupDto groupDto) {
+    @Override
+    public Group toEntity(final GroupDto groupDto) {
         return new Group(
                 groupDto.getId(),
                 groupDto.getName(),
@@ -18,17 +19,12 @@ public class GroupMapper {
         );
     }
 
-    public GroupDto mapToDto(final Group group) {
+    @Override
+    public GroupDto toDto(final Group group) {
         return new GroupDto(
                 group.getId(),
                 group.getName(),
                 group.getProducts()
         );
-    }
-
-    public List<GroupDto> mapToDtoList(final List<Group> groupList) {
-        return groupList.stream()
-                .map(this::mapToDto)
-                .collect(Collectors.toList());
     }
 }

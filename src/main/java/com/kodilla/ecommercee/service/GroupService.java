@@ -21,11 +21,11 @@ public class GroupService {
     private final GroupRepository repository;
 
     public List<GroupDto> getAll() {
-        return mapper.mapToDtoList(repository.findAll());
+        return mapper.toDtoList(repository.findAll());
     }
 
     public GroupDto getById(final long id) throws NoSuchIdException {
-        return repository.findById(id).map(mapper::mapToDto).orElseThrow(NoSuchIdException::new);
+        return repository.findById(id).map(mapper::toDto).orElseThrow(NoSuchIdException::new);
     }
 
     @Transactional
@@ -45,8 +45,8 @@ public class GroupService {
     }
 
     private GroupDto saveAndMapToDto(final GroupDto groupDto) {
-        Group group = repository.save(mapper.mapToGroup(groupDto));
-        return mapper.mapToDto(group);
+        Group group = repository.save(mapper.toEntity(groupDto));
+        return mapper.toDto(group);
     }
 
     @Transactional
