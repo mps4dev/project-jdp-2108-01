@@ -32,8 +32,4 @@ public class Cart {
             fetch = FetchType.LAZY
     )
     private List<Product> items = new ArrayList<>();
-
-    @OneToOne
-    @JoinColumn(name = "ORDER_ID")
-    private Order order;
 }
