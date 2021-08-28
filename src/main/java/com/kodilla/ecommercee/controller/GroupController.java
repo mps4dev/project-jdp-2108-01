@@ -1,7 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.GroupDto;
-import com.kodilla.ecommercee.exception.NoSuchIdException;
+import com.kodilla.ecommercee.exception.EntityNotFoundException;
 import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.service.GroupService;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class GroupController {
     }
 
     @GetMapping("/{id}")
-    public GroupDto get(@PathVariable long id) throws NoSuchIdException {
+    public GroupDto get(@PathVariable long id) throws EntityNotFoundException {
         return service.getById(id);
     }
 
@@ -39,12 +39,12 @@ public class GroupController {
     }
 
     @PutMapping
-    public GroupDto update(@RequestBody GroupDto groupDto) throws NoSuchIdException {
+    public GroupDto update(@RequestBody GroupDto groupDto) throws EntityNotFoundException {
         return service.update(groupDto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) throws NoSuchIdException {
+    public void delete(@PathVariable long id) throws EntityNotFoundException {
         service.delete(id);
     }
 }
