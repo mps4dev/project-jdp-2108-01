@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -15,5 +14,5 @@ public class GroupDto {
 
     private long id;
     private String name;
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 }
