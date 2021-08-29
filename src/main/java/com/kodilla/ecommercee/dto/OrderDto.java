@@ -14,5 +14,4 @@ public class OrderDto {
     private long id;
     private User user;
     private Cart cart;
-
 }

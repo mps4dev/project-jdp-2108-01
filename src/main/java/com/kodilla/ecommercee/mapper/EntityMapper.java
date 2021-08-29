@@ -5,14 +5,13 @@ import java.util.stream.Collectors;
 
 abstract class EntityMapper<ENTITY,DTO> {
 
-    List<DTO> mapFrom(List<ENTITY> list) {
+    abstract ENTITY toEntity(DTO dto);
+
+    abstract DTO toDto(ENTITY entity);
+
+    public List<DTO> toDtoList(List<ENTITY> list) {
         return list.stream()
-                .map(this::mapFrom)
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
-
-    abstract DTO mapFrom(ENTITY entity);
-
-    abstract ENTITY mapTo(DTO dto);
-
 }

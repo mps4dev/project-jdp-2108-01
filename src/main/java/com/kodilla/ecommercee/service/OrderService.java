@@ -19,31 +19,36 @@ public class OrderService {
     private final OrderRepository repository;
 
     public List<OrderDto> getAll() {
-        return mapper.mapToOrderDtoList(repository.findAll());
+        return mapper.toDtoList(repository.findAll());
     }
 
     public OrderDto getById(long id) throws EntityNotFoundException {
-        return repository.findById(id).map(mapper::mapFrom).orElseThrow(() -> new EntityNotFoundException(Order.class, id));
+        return repository.findById(id).map(mapper::toDto).orElseThrow(() -> new EntityNotFoundException(Order.class, id));
     }
 
     @Transactional
-    public OrderDto create(final OrderDto orderDto) {
-        return saveAndMapToDto(orderDto);
+    public OrderDto create(final OrderDto orderDto) throws EntityNotFoundException {
+        if(orderDto.getId() != 0){
+            throw new EntityNotFoundException(Order.class, orderDto.getId());
+        }else {
+            return saveAndMapToDto(orderDto);
+        }
     }
 
     @Transactional
     public void delete(final long id) throws EntityNotFoundException {
-        repository.deleteById(id).orElseThrow(() -> new EntityNotFoundException(Order.class, id));
+        repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Order.class, id));
+        repository.deleteById(id);
     }
 
     @Transactional
     public OrderDto update(final OrderDto orderDto) throws EntityNotFoundException {
-        OrderDto order = repository.findById(orderDto.getId()).map(mapper::mapFrom).orElseThrow(() -> new EntityNotFoundException(Order.class, orderDto.getId()));
-        return saveAndMapToDto(order);
+        repository.findById(orderDto.getId()).orElseThrow(() -> new EntityNotFoundException(Order.class, orderDto.getId()));
+        return saveAndMapToDto(orderDto);
     }
 
     private OrderDto saveAndMapToDto(final OrderDto orderDto) {
-        Order order = repository.save(mapper.mapTo(orderDto));
-        return mapper.mapFrom(order);
+        Order order = repository.save(mapper.toEntity(orderDto));
+        return mapper.toDto(order);
     }
 }

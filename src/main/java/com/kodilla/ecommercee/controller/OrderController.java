@@ -3,17 +3,25 @@ package com.kodilla.ecommercee.controller;
 import com.kodilla.ecommercee.dto.OrderDto;
 import com.kodilla.ecommercee.exception.EntityNotFoundException;
 import com.kodilla.ecommercee.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/v1/order")
 public class OrderController {
 
-    @Autowired
-    private OrderService service;
+    private final OrderService service;
 
     @GetMapping
     public List<OrderDto> get() {
@@ -36,7 +44,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderDto create(@RequestBody OrderDto orderDto) {
+    public OrderDto create(@RequestBody OrderDto orderDto) throws EntityNotFoundException {
         return service.create(orderDto);
     }
 }
