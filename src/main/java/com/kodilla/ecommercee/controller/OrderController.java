@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.OrderDto;
+import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.exception.EntityNotFoundException;
 import com.kodilla.ecommercee.service.OrderService;
 import lombok.AllArgsConstructor;
@@ -44,7 +45,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderDto create(@RequestBody OrderDto orderDto) throws EntityNotFoundException {
+    public OrderDto create(@RequestBody OrderDto orderDto) throws CreatingObjectWithIdException {
         return service.create(orderDto);
     }
 }

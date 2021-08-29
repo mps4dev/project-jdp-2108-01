@@ -2,6 +2,7 @@ package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.dto.OrderDto;
+import com.kodilla.ecommercee.exception.CreatingObjectWithIdException;
 import com.kodilla.ecommercee.exception.EntityNotFoundException;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.repository.OrderRepository;
@@ -27,12 +28,11 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderDto create(final OrderDto orderDto) throws EntityNotFoundException {
-        if(orderDto.getId() != 0){
-            throw new EntityNotFoundException(Order.class, orderDto.getId());
-        }else {
-            return saveAndMapToDto(orderDto);
-        }
+    public OrderDto create(final OrderDto orderDto) throws CreatingObjectWithIdException {
+        if(orderDto.getId() != 0)
+            throw new CreatingObjectWithIdException(Order.class, orderDto.getId());
+
+        return saveAndMapToDto(orderDto);
     }
 
     @Transactional
