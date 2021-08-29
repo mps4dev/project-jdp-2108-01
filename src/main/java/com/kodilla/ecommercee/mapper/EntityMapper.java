@@ -3,7 +3,7 @@ package com.kodilla.ecommercee.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
-abstract class EntityMapper<ENTITY,DTO> {
+public abstract class EntityMapper<ENTITY, DTO> {
 
     abstract ENTITY toEntity(DTO dto);
 
