@@ -27,7 +27,7 @@ public class Product {
     private Group group;
 
     @ManyToOne
-    @JoinColumn(name="cart_id")
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @NotNull
