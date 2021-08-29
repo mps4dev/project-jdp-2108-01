@@ -35,12 +35,8 @@ public class GroupService {
 
     @Transactional
     public GroupDto update(final GroupDto groupDto) throws EntityNotFoundException {
-        boolean isPresent = repository.findById(groupDto.getId()).isPresent();
-        if (isPresent) {
-            return saveAndMapToDto(groupDto);
-        } else {
-            throw new EntityNotFoundException(Group.class, groupDto.getId());
-        }
+        repository.findById(groupDto.getId()).orElseThrow(() -> new EntityNotFoundException(Group.class, groupDto.getId()));
+        return saveAndMapToDto(groupDto);
     }
 
     private GroupDto saveAndMapToDto(final GroupDto groupDto) {
@@ -50,11 +46,7 @@ public class GroupService {
 
     @Transactional
     public void delete(final long id) throws EntityNotFoundException {
-        boolean isPresent = repository.findById(id).isPresent();
-        if (isPresent) {
-            repository.deleteById(id);
-        } else {
-            throw new EntityNotFoundException(Group.class, id);
-        }
+        repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Group.class, id));
+        repository.deleteById(id);
     }
 }
