@@ -12,6 +12,7 @@ public class ProductMapper extends EntityMapper<Product, ProductDto>{
         return new Product(
                 productDto.getId(),
                 productDto.getGroup(),
+                productDto.getCart(),
                 productDto.getName(),
                 productDto.getDescription(),
                 productDto.getPrice()
@@ -23,6 +24,7 @@ public class ProductMapper extends EntityMapper<Product, ProductDto>{
         return new ProductDto(
                 product.getId(),
                 product.getGroup(),
+                product.getCart(),
                 product.getName(),
                 product.getDescription(),
                 product.getPrice()
