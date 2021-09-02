@@ -26,10 +26,6 @@ public class Product {
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
     @NotNull
     private String name;
 
