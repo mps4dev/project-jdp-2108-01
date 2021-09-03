@@ -1,0 +1,27 @@
+GET http://localhost:8080/v1/product
+Accept: application/json
+
+###
+
+GET http://localhost:8080/v1/product/1
+Accept: application/json
+
+###
+
+POST http://localhost:8080/v1/product
+Content-Type: application/json
+
+{}
+
+###
+PUT http://localhost:8080/v1/product
+Content-Type: application/json
+
+{}
+
+###
+
+DELETE http://localhost:8080/v1/product/1
+Accept: application/json
+
+###
