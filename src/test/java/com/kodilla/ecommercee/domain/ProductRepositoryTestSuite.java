@@ -1,7 +1,5 @@
-package com.kodilla.ecommercee;
+package com.kodilla.ecommercee.domain;
 
-import com.kodilla.ecommercee.domain.Group;
-import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.repository.GroupRepository;
 import com.kodilla.ecommercee.repository.ProductRepository;
 import org.junit.Test;
@@ -27,25 +25,23 @@ public class ProductRepositoryTestSuite {
     @Autowired
     GroupRepository groupRepository;
 
-    Group group = new Group();
-    Product product = new Product();
-    Product product2 = new Product();
+    private Group group;
+    private Product product;
+    private Product product2;
 
     public void createData() {
-        group.setName("test group");
-        product.setName("test product");
-        product.setGroup(group);
-        product.setPrice(11);
+        group = new Group("test group");
+        product = new Product(group, "test product");
         group.getProducts().add(product);
 
-        product2.setName("test product nr 2");
-        product2.setGroup(group);
-        product2.setPrice(22);
+        product2 = new Product(group, "test product nr2");
         group.getProducts().add(product2);
     }
 
     public void deleteData() {
         try {
+            productRepository.deleteById(product.getId());
+            productRepository.deleteById(product2.getId());
             groupRepository.deleteById(group.getId());
         } catch (Exception e) {
             System.out.println("Something went wrong! Error: " + e);
@@ -61,7 +57,7 @@ public class ProductRepositoryTestSuite {
         groupRepository.save(group);
 
         //Then
-        assertNotEquals(0, group.getId());
+        assertNotEquals(0, product2.getId());
         assertNotEquals(0, product.getId());
 
         //CleanUp
@@ -75,10 +71,24 @@ public class ProductRepositoryTestSuite {
 
         //When
         groupRepository.save(group);
-        deleteData();
+
+        try {
+            productRepository.deleteById(product.getId());
+        } catch (Exception e) {
+            System.out.println("Something went wrong! Error: " + e);
+        }
 
         //Then
         assertEquals(Optional.empty(), productRepository.findById(product.getId()));
+        assertNotEquals(Optional.empty(), productRepository.findById(product2.getId()));
+
+        //CleanUp
+        try {
+            productRepository.deleteById(product2.getId());
+            groupRepository.deleteById(group.getId());
+        } catch (Exception e) {
+            System.out.println("Something went wrong! Error: " + e);
+        }
     }
 
     @Test
@@ -89,11 +99,11 @@ public class ProductRepositoryTestSuite {
         //When
         groupRepository.save(group);
         String updatedName = "updated product";
-        product.setName(updatedName);
+        product = new Product(group, updatedName);
         productRepository.save(product);
 
         //Then
-        assertEquals(updatedName, product.getName());
+        assertEquals(updatedName, productRepository.findById(product.getId()).orElse(new Product()).getName());
 
         //CleanUp
         deleteData();
@@ -109,9 +119,8 @@ public class ProductRepositoryTestSuite {
         Optional<Product> retrievedProduct = productRepository.findById(product.getId());
 
         //Then
-        assert retrievedProduct.orElse(null) != null;
-        assertEquals("test product", retrievedProduct.get().getName());
-
+        assertTrue(retrievedProduct.isPresent());
+        assertEquals("test product", retrievedProduct.orElse(new Product()).getName());
         //CleanUp
         deleteData();
     }
@@ -123,10 +132,10 @@ public class ProductRepositoryTestSuite {
 
         //When
         groupRepository.save(group);
-        List<Product> retrievedProductList = (List<Product>) productRepository.findAll();
+        List<Product> retrievedProductList = productRepository.findAll();
 
         //Then
-        assertTrue(retrievedProductList.size() >= 2);
+        assertEquals(2, retrievedProductList.size());
 
         //CleanUp
         deleteData();
