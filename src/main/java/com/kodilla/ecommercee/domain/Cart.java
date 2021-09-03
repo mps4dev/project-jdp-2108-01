@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import java.util.ArrayList;
@@ -24,8 +25,12 @@ public class Cart {
     private long id;
 
     @ManyToMany
-    @JoinColumn(name = "product_id")
-    private List<Product> product = new ArrayList<>();
+    @JoinTable(
+            name = "<products>",
+            joinColumns = { @JoinColumn(name = "<cart_id>") },
+            inverseJoinColumns = { @JoinColumn(name = "<product_id>") }
+    )
+    private List<Product> products = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "user_id")
