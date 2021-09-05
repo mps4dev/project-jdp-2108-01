@@ -5,7 +5,7 @@ import com.kodilla.ecommercee.dto.ProductDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductMapper extends EntityMapper<Product, ProductDto>{
+public class ProductMapper extends EntityMapper<Product, ProductDto> {
 
     @Override
     public Product toEntity(ProductDto productDto) {
