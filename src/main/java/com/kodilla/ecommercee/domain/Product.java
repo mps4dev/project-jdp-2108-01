@@ -3,8 +3,6 @@ package com.kodilla.ecommercee.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-@RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -25,11 +22,11 @@ public class Product {
     private long id;
 
     @ManyToOne
-    @NonNull
+    @NotNull
     @JoinColumn(name = "group_id")
     private Group group;
 
-    @NonNull
+    @NotNull
     private String name;
 
     private String description;
