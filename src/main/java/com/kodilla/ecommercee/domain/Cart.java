@@ -8,5 +8,4 @@ public class Cart {
 
     @Id
     private long id;
-
 }
