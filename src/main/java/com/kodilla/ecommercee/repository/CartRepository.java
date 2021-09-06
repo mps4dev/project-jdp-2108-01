@@ -1,13 +1,14 @@
 package com.kodilla.ecommercee.repository;
 
-import com.kodilla.ecommercee.domain.Product;
+import com.kodilla.ecommercee.domain.Cart;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Long> {
+public interface CartRepository extends CrudRepository<Cart, Long> {
+
     @Override
-    List<Product> findAll();
+    List<Cart> findAll();
 }
