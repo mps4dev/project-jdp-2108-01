@@ -29,9 +29,7 @@ public class OrderService {
 
     @Transactional
     public OrderDto create(final OrderDto orderDto) throws CreatingObjectWithIdException {
-        if(orderDto.getId() != 0)
-            throw new CreatingObjectWithIdException(Order.class, orderDto.getId());
-
+        if (orderDto.getId() != 0) throw new CreatingObjectWithIdException(Order.class, orderDto.getId());
         return saveAndMapToDto(orderDto);
     }
 
