@@ -1,7 +1,5 @@
 package com.kodilla.ecommercee.dto;
 
-import com.kodilla.ecommercee.domain.Cart;
-import com.kodilla.ecommercee.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class OrderDto {
 
     private long id;
-    private User user;
-    private Cart cart;
+    private long userId;
+    private long cartId;
 }

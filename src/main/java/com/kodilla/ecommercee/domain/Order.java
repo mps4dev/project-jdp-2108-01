@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,10 +23,12 @@ public class Order {
     @GeneratedValue
     private long id;
 
+    @NotNull
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @NotNull
     @OneToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
