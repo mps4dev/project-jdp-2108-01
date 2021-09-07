@@ -1,0 +1,20 @@
+POST http://localhost:8080/v1/user
+Content-Type: application/json
+
+{}
+
+###
+
+PUT http://localhost:8080/v1/user/block/1
+Content-Type: application/json
+
+{}
+
+###
+
+PUT http://localhost:8080/v1/user/generate/1
+Content-Type: application/json
+
+{}
+
+###
