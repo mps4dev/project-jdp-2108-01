@@ -2,7 +2,11 @@ package com.kodilla.ecommercee.mapper;
 
 import com.kodilla.ecommercee.domain.UserKey;
 import com.kodilla.ecommercee.dto.UserKeyDto;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
+@Service
 public class UserKeyMapper extends EntityMapper<UserKey, UserKeyDto> {
 
     @Override

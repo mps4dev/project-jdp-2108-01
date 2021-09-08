@@ -6,10 +6,14 @@ import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.UserDto;
 import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
+@Service
 public class UserMapper extends EntityMapper<User, UserDto> {
 
     CartRepository cartRepository;
