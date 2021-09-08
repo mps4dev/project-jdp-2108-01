@@ -1,15 +1,17 @@
-package com.kodilla.ecommercee.dto;
+package com.kodilla.ecommercee.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Embeddable;
 import java.time.Instant;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
-public class UserKeyDto {
+@AllArgsConstructor
+@NoArgsConstructor
+@Embeddable
+public class UserKey {
 
     private long value;
     private Instant expirationTime;
