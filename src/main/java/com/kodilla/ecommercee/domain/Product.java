@@ -35,5 +35,4 @@ public class Product {
 
     @NotNull
     private int price;
-
 }
