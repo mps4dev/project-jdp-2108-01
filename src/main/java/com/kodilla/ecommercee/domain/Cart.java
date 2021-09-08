@@ -34,6 +34,7 @@ public class Cart {
     )
     private List<Product> products = new ArrayList<>();
 
+    @NotNull
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     private User user;
