@@ -40,4 +40,3 @@ public class Group {
     )
     private List<Product> products = new ArrayList<>();
 }
-
