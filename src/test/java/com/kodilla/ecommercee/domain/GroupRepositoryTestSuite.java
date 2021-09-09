@@ -88,14 +88,20 @@ public class GroupRepositoryTestSuite {
         //When
         try {
             groupRepository.deleteById(group1.getId());
-            groupRepository.deleteById(group2.getId());
         } catch (Exception e) {
             System.out.println("Something went wrong! Error: " + e);
         }
 
         //Then
         assertEquals(Optional.empty(), groupRepository.findById(group1.getId()));
-        assertEquals(Optional.empty(), groupRepository.findById(group2.getId()));
+        assertNotEquals(Optional.empty(), groupRepository.findById(group2.getId()));
+
+        //CleanUp
+        try {
+            groupRepository.deleteById(group2.getId());
+        } catch (Exception e) {
+            System.out.println("Something went wrong! Error: " + e);
+        }
     }
 
     @Test
