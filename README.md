@@ -1,6 +1,6 @@
 # project-jdp-2108-01
 
-##Projekt zespołowy Kodilla 08.2021
+## Projekt zespołowy Kodilla 08.2021
 
 **Project Manager** Marcin Szuppe
 
@@ -12,6 +12,6 @@
 - Dominik Bernatowicz
 - Kamil Król
 
-###Endpoints documentation
+### Endpoints documentation
 
 - [Group Controller endpoints](docs/GroupEndpoints.md)
