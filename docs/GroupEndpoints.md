@@ -4,26 +4,26 @@
 
 ## 1. Get all product groups
 
-###HTTP Request:
+### HTTP Request:
 `GET /v1/group/`
 
-###Body:
+### Body:
 empty
 
-###Returns:
+### Returns:
 **JSON** with array of all product groups
 
 
 
 ## 2. Get product group with exact ID
 
-###HTTP Request:
+### HTTP Request:
 `GET /v1/group/{id}` where insert group ID instead of {id} 
 
-###Body:
+### Body:
 empty
 
-###Returns:
+### Returns:
 **JSON** with group of exact id
 
 **or** 500 Internal Server Error - if there is no group with such ID
@@ -32,10 +32,10 @@ empty
 
 ## 3. Creating new product group
 
-###HTTP Request:
+### HTTP Request:
 `POST /v1/group/`
 
-###Body:
+### Body:
 **Type:** JSON
  
 ```
@@ -48,7 +48,7 @@ Insert group name instead of `<groupName>`
 
 It's not necessary to include `"productsIds"` filed, but you can define which products will be in the group by inserting their IDs in array instead of `<id1>`, `<id2>`, etc.
 
-###Returns:
+### Returns:
 **JSON** with saved group, for ex.
 ```
 {
@@ -64,10 +64,10 @@ It's not necessary to include `"productsIds"` filed, but you can define which pr
 
 ## 4. Updating existing product group
 
-###HTTP Request:
+### HTTP Request:
 `PUT /v1/group/`
 
-###Body:
+### Body:
 **Type:** JSON
 
 ```
@@ -79,7 +79,7 @@ It's not necessary to include `"productsIds"` filed, but you can define which pr
 ```
 Insert group ID instead of `<groupId>`, group name instead of `<groupName>` and product(s) IDs instead of `<id1>`, `<id2>`, etc. in array.
 
-###Returns:
+### Returns:
 **JSON** with updated group, for ex.
 ```
 {
@@ -95,13 +95,13 @@ Insert group ID instead of `<groupId>`, group name instead of `<groupName>` and 
 
 ## 5. Deleting product group with exact ID
 
-###HTTP Request:
+### HTTP Request:
 `DELETE /v1/group/{id}` where insert group ID instead of {id}
 
-###Body:
+### Body:
 empty
 
-###Returns:
+### Returns:
 empty **JSON**
 
 **or** 500 Internal Server Error - if there is no group with such ID
