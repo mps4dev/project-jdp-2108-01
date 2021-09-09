@@ -5,12 +5,12 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/v1/user/block/1
+PUT http://localhost:8080/v1/user/1/block
 Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/v1/user/generate/1
+PUT http://localhost:8080/v1/user/1/generate
 Content-Type: application/json
 
 ###
