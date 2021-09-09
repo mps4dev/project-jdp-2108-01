@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,15 +34,15 @@ public class GroupRepositoryTestSuite {
 
     public void createData() {
         group1 = new Group(0, "test group1", new ArrayList<>());
-        product1 = new Product(0,group1, "test product1","description1",10);
-        product2 = new Product(0,group1, "test product2","description2",11);
+        product1 = new Product(0, group1, "test product1", "description1", 10);
+        product2 = new Product(0, group1, "test product2", "description2", 11);
 
         group1.getProducts().add(product1);
         group1.getProducts().add(product2);
 
         group2 = new Group(0, "test group2", new ArrayList<>());
-        product3 = new Product(0,group2, "test product3","description3",12);
-        product4 = new Product(0,group2, "test product4","description4",13);
+        product3 = new Product(0, group2, "test product3", "description3", 12);
+        product4 = new Product(0, group2, "test product4", "description4", 13);
 
         group2.getProducts().add(product3);
         group2.getProducts().add(product4);
@@ -112,7 +112,7 @@ public class GroupRepositoryTestSuite {
         //When
         groupRepository.save(group1);
         String updatedName = "updated group";
-        group1 = new Group(group1.getId(),updatedName,group1.getProducts());
+        group1 = new Group(group1.getId(), updatedName, group1.getProducts());
         Group updatedGroup = groupRepository.save(group1);
 
         //Then
