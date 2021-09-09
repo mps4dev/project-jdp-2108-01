@@ -140,7 +140,7 @@ public class GroupRepositoryTestSuite {
     }
 
     @Test
-    public void testPGroupRepositoryGetAll() {
+    public void testGroupRepositoryGetAll() {
         //Given
         createData();
 
