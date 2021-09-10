@@ -32,35 +32,6 @@ public class GroupRepositoryTestSuite {
     private Product product3;
     private Product product4;
 
-    public void createData() {
-        group1 = new Group(0, "test group1", new ArrayList<>());
-        product1 = new Product(0, group1, "test product1", "description1", 10);
-        product2 = new Product(0, group1, "test product2", "description2", 11);
-
-        group1.getProducts().add(product1);
-        group1.getProducts().add(product2);
-
-        group2 = new Group(0, "test group2", new ArrayList<>());
-        product3 = new Product(0, group2, "test product3", "description3", 12);
-        product4 = new Product(0, group2, "test product4", "description4", 13);
-
-        group2.getProducts().add(product3);
-        group2.getProducts().add(product4);
-    }
-
-    public void deleteData() {
-        try {
-            productRepository.delete(product1);
-            productRepository.delete(product2);
-            groupRepository.delete(group1);
-            productRepository.delete(product3);
-            productRepository.delete(product4);
-            groupRepository.delete(group2);
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
-    }
-
     @Test
     public void testGroupRepositorySave() {
         //Given
@@ -154,5 +125,34 @@ public class GroupRepositoryTestSuite {
 
         //CleanUp
         deleteData();
+    }
+
+    private void createData() {
+        group1 = new Group(0, "test group1", new ArrayList<>());
+        product1 = new Product(0, group1, "test product1", "description1", 10);
+        product2 = new Product(0, group1, "test product2", "description2", 11);
+
+        group1.getProducts().add(product1);
+        group1.getProducts().add(product2);
+
+        group2 = new Group(0, "test group2", new ArrayList<>());
+        product3 = new Product(0, group2, "test product3", "description3", 12);
+        product4 = new Product(0, group2, "test product4", "description4", 13);
+
+        group2.getProducts().add(product3);
+        group2.getProducts().add(product4);
+    }
+
+    private void deleteData() {
+        try {
+            productRepository.delete(product1);
+            productRepository.delete(product2);
+            groupRepository.delete(group1);
+            productRepository.delete(product3);
+            productRepository.delete(product4);
+            groupRepository.delete(group2);
+        } catch (Exception e) {
+            System.out.println("Something went wrong! Error: " + e);
+        }
     }
 }
