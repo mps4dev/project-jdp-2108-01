@@ -52,14 +52,21 @@ public class GroupRepositoryTestSuite {
         //Given
         createData();
         groupRepository.save(group1);
+        groupRepository.save(group2);
 
         //When
         groupRepository.deleteById(group1.getId());
 
-
         //Then
         assertEquals(Optional.empty(), groupRepository.findById(group1.getId()));
+        assertNotEquals(Optional.empty(), groupRepository.findById(group2.getId()));
 
+        //CleanUp
+        try {
+            groupRepository.deleteById(group2.getId());
+        } catch (Exception e) {
+            System.out.println("Something went wrong! Error: " + e);
+        }
     }
 
     @Test
