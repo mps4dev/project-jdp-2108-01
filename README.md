@@ -1,11 +1,17 @@
 # project-jdp-2108-01
-Projekt zespołowy Kodilla 08.2021
 
-PM Marcin Szuppe
+## Projekt zespołowy Kodilla 08.2021
 
-Kamil Dawid
-Patryk Ziemniak
-Anna Dyrduł
-Julia Sidor
-Dominik Bernatowicz
-Kamil Król
+**Project Manager** Marcin Szuppe
+
+**Contributors**
+- Kamil Dawid
+- Patryk Ziemniak
+- Anna Dyrduł
+- Julia Sidor
+- Dominik Bernatowicz
+- Kamil Król
+
+### Endpoints documentation
+
+- [Group Controller endpoints](docs/GroupEndpoints.md)
