@@ -38,10 +38,10 @@ public class GroupRepositoryTestSuite {
         createData();
 
         //When
-        Group result = groupRepository.save(group1);
+        groupRepository.save(group1);
 
         //Then
-        assertEquals(1, result.getId());
+        assertNotEquals(0, group1.getId());
 
         //CleanUp
         deleteData();
