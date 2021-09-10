@@ -39,11 +39,9 @@ public class GroupRepositoryTestSuite {
 
         //When
         groupRepository.save(group1);
-        groupRepository.save(group2);
 
         //Then
         assertNotEquals(0, group1.getId());
-        assertNotEquals(0, group2.getId());
 
         //CleanUp
         deleteData();
@@ -54,7 +52,6 @@ public class GroupRepositoryTestSuite {
         //Given
         createData();
         groupRepository.save(group1);
-        groupRepository.save(group2);
 
         //When
         try {
@@ -65,14 +62,7 @@ public class GroupRepositoryTestSuite {
 
         //Then
         assertEquals(Optional.empty(), groupRepository.findById(group1.getId()));
-        assertNotEquals(Optional.empty(), groupRepository.findById(group2.getId()));
 
-        //CleanUp
-        try {
-            groupRepository.deleteById(group2.getId());
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
     }
 
     @Test
