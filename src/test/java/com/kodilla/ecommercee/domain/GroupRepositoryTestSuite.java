@@ -73,9 +73,9 @@ public class GroupRepositoryTestSuite {
     public void testGroupRepositoryUpdate() {
         //Given
         createData();
+        groupRepository.save(group1);
 
         //When
-        groupRepository.save(group1);
         String updatedName = "updated group";
         group1 = new Group(group1.getId(), updatedName, group1.getProducts());
         Group updatedGroup = groupRepository.save(group1);
@@ -91,9 +91,9 @@ public class GroupRepositoryTestSuite {
     public void testGroupRepositoryGet() {
         //Given
         createData();
+        groupRepository.save(group1);
 
         //When
-        groupRepository.save(group1);
         Optional<Group> retrievedGroup = groupRepository.findById(group1.getId());
 
         //Then
@@ -108,10 +108,10 @@ public class GroupRepositoryTestSuite {
     public void testGroupRepositoryGetAll() {
         //Given
         createData();
-
-        //When
         groupRepository.save(group1);
         groupRepository.save(group2);
+
+        //When
         List<Group> retrievedGroupList = groupRepository.findAll();
 
         //Then
