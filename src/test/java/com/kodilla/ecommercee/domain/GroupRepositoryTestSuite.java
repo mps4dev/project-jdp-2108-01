@@ -20,10 +20,10 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest
 public class GroupRepositoryTestSuite {
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Autowired
-    GroupRepository groupRepository;
+    private GroupRepository groupRepository;
 
     private Group group1;
     private Group group2;
