@@ -54,11 +54,8 @@ public class GroupRepositoryTestSuite {
         groupRepository.save(group1);
 
         //When
-        try {
-            groupRepository.deleteById(group1.getId());
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
+        groupRepository.deleteById(group1.getId());
+
 
         //Then
         assertEquals(Optional.empty(), groupRepository.findById(group1.getId()));
