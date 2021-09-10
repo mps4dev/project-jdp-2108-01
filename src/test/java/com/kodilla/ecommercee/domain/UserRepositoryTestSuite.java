@@ -21,25 +21,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UserRepositoryTestSuite {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     private User user;
 
-    private void prepareData() {
-        user = new User(0, "testUser", false, 123456789, new ArrayList<>(), new ArrayList<>());
-    }
-
-    private void prepareDataAndSave() {
-        prepareData();
-        userRepository.save(user);
-    }
-
-    private void deleteData() {
-        userRepository.deleteById(user.getId());
-    }
-
     @Test
-    public void userRepositoryGetAll() {
+    public void shouldReturnAllUsersFromRepository() {
         //Given
         prepareDataAndSave();
 
@@ -54,7 +41,7 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void userRepositoryGet() {
+    public void shouldReturnUserWithExactIdFromRepository() {
         //Given
         prepareDataAndSave();
 
@@ -70,7 +57,7 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void userRepositorySave() {
+    public void shouldSaveUserToRepositoryAndGrantCorrectId() {
         //Given
         prepareData();
 
@@ -85,7 +72,7 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void userRepositoryUpdate() {
+    public void shouldUpdateUserInRepository() {
         //Given
         prepareDataAndSave();
 
@@ -103,7 +90,7 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void userRepositoryDelete() {
+    public void shouldDeleteUserFromRepository() {
         //Given
         prepareDataAndSave();
 
@@ -115,5 +102,18 @@ public class UserRepositoryTestSuite {
         //Then
         assertFalse(resultByName.isPresent());
         assertEquals(0, result.size());
+    }
+
+    private void prepareData() {
+        user = new User(0, "testUser", false, 123456789, new ArrayList<>(), new ArrayList<>());
+    }
+
+    private void prepareDataAndSave() {
+        prepareData();
+        userRepository.save(user);
+    }
+
+    private void deleteData() {
+        userRepository.deleteById(user.getId());
     }
 }
