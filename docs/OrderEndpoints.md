@@ -3,7 +3,7 @@
 ## 1. Get all orders
 
 ### HTTP Request:
-`GET /v1/order`
+`GET /v1/order/`
 
 ### Body:
 empty
@@ -13,7 +13,7 @@ empty
 
 
 
-## 2. Get orders with exact ID
+## 2. Get order with exact ID
 
 ### HTTP Request:
 `GET /v1/order/{id}` where insert order ID instead of {id}
@@ -42,9 +42,7 @@ empty
     "cartId":"<cartId>"
 }
 ```
-Insert userId instead of `<userId>`
-
-Insert cartId instead of `<cartId>`
+Insert userId instead of `<userId>` and cartId instead of `<cardId>`
 
 ### Returns:
 **JSON** with saved order, for ex.
