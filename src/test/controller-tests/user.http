@@ -1,0 +1,20 @@
+POST http://localhost:8080/v1/user
+Content-Type: application/json
+
+{
+  "username": "Piotr",
+  "status": true,
+  "userKey": 59403
+}
+
+###
+
+PUT http://localhost:8080/v1/user/1/block
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/v1/user/1/generate
+Content-Type: application/json
+
+###
