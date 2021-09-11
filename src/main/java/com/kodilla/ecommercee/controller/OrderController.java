@@ -33,9 +33,9 @@ public class OrderController {
         return service.getById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) throws EntityNotFoundException {
-        service.delete(id);
+    @PostMapping
+    public OrderDto create(@RequestBody OrderDto orderDto) throws CreatingObjectWithIdException {
+        return service.create(orderDto);
     }
 
     @PutMapping
@@ -43,8 +43,8 @@ public class OrderController {
         return service.update(orderDto);
     }
 
-    @PostMapping
-    public OrderDto create(@RequestBody OrderDto orderDto) throws CreatingObjectWithIdException {
-        return service.create(orderDto);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) throws EntityNotFoundException {
+        service.delete(id);
     }
 }
