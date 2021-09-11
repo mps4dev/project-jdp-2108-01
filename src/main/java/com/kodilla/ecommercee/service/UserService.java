@@ -27,7 +27,7 @@ public class UserService {
 
     @Transactional
     public UserDto create(final UserDto userDto) throws CreatingObjectWithIdException {
-        if(userDto.getId() != 0) throw new CreatingObjectWithIdException(User.class, userDto.getId());
+        if (userDto.getId() != 0) throw new CreatingObjectWithIdException(User.class, userDto.getId());
         return saveAndMapToDto(userDto);
     }
 
@@ -39,15 +39,17 @@ public class UserService {
     @Transactional
     public void block(final long id) throws EntityNotFoundException {
         User user = repository.findById(id).orElseThrow(() -> new EntityNotFoundException(User.class, id));
-        repository.save(new User(user.getId(),user.getUsername(), false, user.getUserKey(), user.getCarts(), user.getOrders()));
+        user.setBlocked(true);
+        repository.save(user);
     }
 
     @Transactional
     public UserKeyDto generateKey(final long id) throws EntityNotFoundException {
         User user = repository.findById(id).orElseThrow(() -> new EntityNotFoundException(User.class, id));
         Random random = new Random();
-        UserKey key =  new UserKey(random.nextLong(), Instant.now().plus(Duration.ofHours(1)));
-        repository.save(new User(user.getId(),user.getUsername(), user.isStatus(), key, user.getCarts(), user.getOrders()));
-        return userKeyMapper.toDto(key);
+        UserKey key = new UserKey(random.nextLong(), Instant.now().plus(Duration.ofHours(1)));
+        user.setUserKey(key);
+        repository.save(user);
+        return userKeyMapper.toDto(user.getUserKey());
     }
 }

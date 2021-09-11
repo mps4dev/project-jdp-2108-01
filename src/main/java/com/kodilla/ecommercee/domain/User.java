@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -21,6 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity(name = "users")
 public class User {
 
@@ -32,13 +34,13 @@ public class User {
     private String username;
 
     @NotNull
-    private boolean status;
+    private boolean blocked;
 
     @NotNull
     @Embedded
     @AttributeOverrides({
-            @AttributeOverride( name = "value", column = @Column(name = "userkey_value")),
-            @AttributeOverride( name = "expirationTime", column = @Column(name = "userkey_expiration_time"))
+            @AttributeOverride(name = "value", column = @Column(name = "userkey_value")),
+            @AttributeOverride(name = "expirationTime", column = @Column(name = "userkey_expiration_time"))
     })
     private UserKey userKey;
 

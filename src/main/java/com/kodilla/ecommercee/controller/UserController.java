@@ -25,12 +25,12 @@ public class UserController {
         return service.create(userDto);
     }
 
-    @PutMapping("/block/{id}")
+    @PutMapping("/{id}/block")
     public void block(@PathVariable long id) throws EntityNotFoundException {
         service.block(id);
     }
 
-    @PutMapping("/generate/{id}")
+    @PutMapping("/{id}/generate")
     public UserKeyDto generateKey(@PathVariable long id) throws EntityNotFoundException {
         return service.generateKey(id);
     }

@@ -16,16 +16,17 @@ import java.util.stream.Collectors;
 @Service
 public class UserMapper extends EntityMapper<User, UserDto> {
 
-    CartRepository cartRepository;
-    OrderRepository orderRepository;
+    private final CartRepository cartRepository;
+    private final OrderRepository orderRepository;
+    private final UserKeyMapper userKeyMapper;
 
     @Override
     public User toEntity(final UserDto userDto) {
         return new User(
                 userDto.getId(),
                 userDto.getUsername(),
-                userDto.isStatus(),
-                userDto.getUserKey(),
+                userDto.isBlocked(),
+                userKeyMapper.toEntity(userDto.getUserKeyDto()),
                 userDto.getCartsId().stream()
                         .map(cartRepository::findById)
                         .filter(Optional::isPresent)
@@ -45,14 +46,14 @@ public class UserMapper extends EntityMapper<User, UserDto> {
         return new UserDto(
                 user.getId(),
                 user.getUsername(),
-                user.isStatus(),
-                user.getUserKey(),
+                user.isBlocked(),
+                userKeyMapper.toDto(user.getUserKey()),
                 user.getCarts().stream()
-                    .map(Cart::getId)
-                    .collect(Collectors.toList()),
+                        .map(Cart::getId)
+                        .collect(Collectors.toList()),
                 user.getOrders().stream()
-                    .map(Order::getId)
-                    .collect(Collectors.toList())
+                        .map(Order::getId)
+                        .collect(Collectors.toList())
         );
     }
 }
