@@ -14,7 +14,7 @@ public class UserDto {
     private long id;
     private String username;
     private boolean blocked;
-    private UserKeyDto userKeyDto;
+    private UserKeyDto userKey;
     private List<Long> cartsId;
     private List<Long> ordersId;
 }
