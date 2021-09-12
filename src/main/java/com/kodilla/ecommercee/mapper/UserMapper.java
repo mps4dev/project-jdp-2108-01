@@ -26,7 +26,7 @@ public class UserMapper extends EntityMapper<User, UserDto> {
                 userDto.getId(),
                 userDto.getUsername(),
                 userDto.isBlocked(),
-                userKeyMapper.toEntity(userDto.getUserKeyDto()),
+                userKeyMapper.toEntity(userDto.getUserKey()),
                 userDto.getCartsId().stream()
                         .map(cartRepository::findById)
                         .filter(Optional::isPresent)
