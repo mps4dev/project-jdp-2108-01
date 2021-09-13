@@ -55,8 +55,16 @@ public class User {
     @OneToMany(
             targetEntity = Order.class,
             mappedBy = "user",
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY
     )
     private List<Order> orders = new ArrayList<>();
+
+    public void addCart(Cart cart) {
+        carts.add(cart);
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 }
