@@ -92,16 +92,13 @@ public class CartRepositoryTestSuite {
         prepareDataAndSave();
 
         //When
-        String updatedUsername = "updated User";
-        user = new User(user.getId(),updatedUsername, user.isStatus(), user.getUserKey(), user.getCarts(), user.getOrders());
-
-        System.out.println(user.getUsername());
-        cart = new Cart(1, new ArrayList<>(), user);
-        userRepository.save(user);
-        Cart updatedCart = cartRepository.save(cart);
+        User newUser = new User(0, "new User", user.isStatus(), user.getUserKey(), user.getCarts(), user.getOrders());
+        userRepository.save(newUser);
+        cart.setUser(newUser);
+        cartRepository.save(cart);
 
         //Then
-        assertEquals(updatedUsername, updatedCart.getUser().getUsername());
+        assertEquals(cart.getUser().getId(), newUser.getId());
 
         //CleanUp
         deleteData();
