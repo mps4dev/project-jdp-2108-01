@@ -15,3 +15,4 @@
 ### Endpoints documentation
 
 - [Group Controller endpoints](docs/GroupEndpoints.md)
+- [Order Controller endpoints](docs/OrderEndpoints.md)
