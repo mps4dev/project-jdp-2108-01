@@ -35,7 +35,7 @@ public class Cart {
     private List<Product> products = new ArrayList<>();
 
     @NotNull
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 }

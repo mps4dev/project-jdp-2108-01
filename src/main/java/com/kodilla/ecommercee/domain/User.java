@@ -48,4 +48,12 @@ public class User {
             fetch = FetchType.LAZY
     )
     private List<Order> orders = new ArrayList<>();
+
+    public void addCart(Cart cart) {
+        carts.add(cart);
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 }

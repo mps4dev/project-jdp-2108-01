@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class CartRepositoryTestSuite {
 
     @Autowired
@@ -41,11 +43,15 @@ public class CartRepositoryTestSuite {
     }
 
     private void deleteData() {
+            userRepository.delete(user);
             cartRepository.delete(cart);
     }
 
     private void prepareDataAndSave() {
-        createData();
+        user = new User(0, "test user", false, 1234, new ArrayList<>(), new ArrayList<>());
+        cart = new Cart(0, new ArrayList<>(), user);
+        user.addCart(cart);
+        userRepository.save(user);
         cartRepository.save(cart);
     }
 
@@ -107,13 +113,14 @@ public class CartRepositoryTestSuite {
         prepareDataAndSave();
 
         //When
-        order = new Order(0, cart.getUser(), cart);
-        userRepository.save(user);
+        User user = userRepository.findById(this.user.getId()).orElse(null);
+        Cart cart = cartRepository.findById(this.cart.getId()).orElse(null);
+        order = new Order(0, user, cart);
         orderRepository.save(order);
         Optional<Order> resultById = orderRepository.findById(order.getId());
 
         //Then
-        assertEquals(resultById, order);
+        assertEquals(resultById.get().getId(), order.getId());
 
         //CleanUp
         deleteData();
