@@ -78,7 +78,7 @@ public class UserRepositoryTestSuite {
 
         //When
         String updatedName = "updatedUser";
-        user = new User(user.getId(), updatedName, user.isStatus(), user.getUserKey(), user.getCarts(), user.getOrders());
+        user = new User(user.getId(), updatedName, user.isBlocked(), user.getUserKey(), user.getCarts(), user.getOrders());
         User result = userRepository.save(user);
 
         //Then
@@ -105,7 +105,7 @@ public class UserRepositoryTestSuite {
     }
 
     private void prepareData() {
-        user = new User(0, "testUser", false, 123456789, new ArrayList<>(), new ArrayList<>());
+        user = new User(0, "testUser", false, new UserKey(), new ArrayList<>(), new ArrayList<>());
     }
 
     private void prepareDataAndSave() {

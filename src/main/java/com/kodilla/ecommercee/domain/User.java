@@ -5,7 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,10 +34,15 @@ public class User {
     private String username;
 
     @NotNull
-    private boolean status;
+    private boolean blocked;
 
     @NotNull
-    private long userKey;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "value", column = @Column(name = "userkey_value")),
+            @AttributeOverride(name = "expirationTime", column = @Column(name = "userkey_expiration_time"))
+    })
+    private UserKey userKey;
 
     @OneToMany(
             targetEntity = Cart.class,

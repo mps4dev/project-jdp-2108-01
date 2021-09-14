@@ -37,7 +37,7 @@ public class CartService {
 
     @Transactional
     public CartDto update(final CartDto cartDto) throws EntityNotFoundException {
-        repository.findById(cartDto.getId()).orElseThrow(() -> new EntityNotFoundException(Order.class, cartDto.getId()));
+        repository.findById(cartDto.getId()).orElseThrow(() -> new EntityNotFoundException(Cart.class, cartDto.getId()));
         return saveAndMapToDto(cartDto);
     }
 
