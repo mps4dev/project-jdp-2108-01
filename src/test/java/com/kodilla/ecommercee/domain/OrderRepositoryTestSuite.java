@@ -60,13 +60,9 @@ public class OrderRepositoryTestSuite {
     }
 
     private void deleteData() {
-        try {
-            orderRepository.delete(order);
-            cartRepository.delete(cart);
-            userRepository.delete(user);
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
+        orderRepository.delete(order);
+        cartRepository.delete(cart);
+        userRepository.delete(user);
     }
 
     @Test
@@ -74,9 +70,10 @@ public class OrderRepositoryTestSuite {
         //Given
         createData();
 
-        //When
         userRepository.save(user);
         cartRepository.save(cart);
+
+        //When
         orderRepository.save(order);
 
         //Then
@@ -91,28 +88,20 @@ public class OrderRepositoryTestSuite {
         //Given
         createData();
 
-        //When
         userRepository.save(user);
         cartRepository.save(cart);
         orderRepository.save(order);
 
-        try {
-            orderRepository.deleteById(order.getId());
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
+        //When
+        orderRepository.deleteById(order.getId());
 
         //Then
         assertFalse(orderRepository.findById(order.getId()).isPresent());
         assertEquals(0, orderRepository.findAll().size());
 
         //Clean-up
-        try {
-            cartRepository.deleteById(cart.getId());
-            userRepository.deleteById(user.getId());
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
+        cartRepository.deleteById(cart.getId());
+        userRepository.deleteById(user.getId());
     }
 
     @Test
@@ -120,7 +109,6 @@ public class OrderRepositoryTestSuite {
         //Given
         createData();
 
-        //When
         userRepository.save(user);
         cartRepository.save(cart);
         orderRepository.save(order);
@@ -134,6 +122,8 @@ public class OrderRepositoryTestSuite {
 
         userRepository.save(user3);
         cartRepository.save(cart3);
+
+        //When
         Order updatedOrder = orderRepository.save(order);
 
         //Then
@@ -141,12 +131,8 @@ public class OrderRepositoryTestSuite {
 
         //Clean-up
         deleteData();
-        try {
-            cartRepository.deleteById(cart3.getId());
-            userRepository.deleteById(user3.getId());
-        } catch (Exception e) {
-            System.out.println("Something went wrong! Error: " + e);
-        }
+        cartRepository.deleteById(cart3.getId());
+        userRepository.deleteById(user3.getId());
     }
 
     @Test
@@ -154,11 +140,11 @@ public class OrderRepositoryTestSuite {
         //Given
         createData();
 
-        //When
         userRepository.save(user);
         cartRepository.save(cart);
         orderRepository.save(order);
 
+        //When
         Optional<Order> retrievedOrder = orderRepository.findById(order.getId());
 
         //Then
@@ -175,7 +161,6 @@ public class OrderRepositoryTestSuite {
         createData();
         createAdditionalData();
 
-        //When
         userRepository.save(user);
         cartRepository.save(cart);
         orderRepository.save(order);
@@ -184,6 +169,7 @@ public class OrderRepositoryTestSuite {
         cartRepository.save(cart2);
         orderRepository.save(order2);
 
+        //When
         List<Order> retrievedOrderList = orderRepository.findAll();
 
         //Then
