@@ -89,7 +89,6 @@ public class OrderRepositoryTestSuite {
         createData();
 
         userRepository.save(user);
-        cartRepository.save(cart);
         orderRepository.save(order);
 
         //When
@@ -101,7 +100,6 @@ public class OrderRepositoryTestSuite {
 
         //Clean-up
         cartRepository.deleteById(cart.getId());
-        userRepository.deleteById(user.getId());
     }
 
     @Test
@@ -131,8 +129,6 @@ public class OrderRepositoryTestSuite {
 
         //Clean-up
         deleteData();
-        cartRepository.deleteById(cart3.getId());
-        userRepository.deleteById(user3.getId());
     }
 
     @Test
@@ -162,11 +158,9 @@ public class OrderRepositoryTestSuite {
         createAdditionalData();
 
         userRepository.save(user);
-        cartRepository.save(cart);
         orderRepository.save(order);
 
         userRepository.save(user2);
-        cartRepository.save(cart2);
         orderRepository.save(order2);
 
         //When
