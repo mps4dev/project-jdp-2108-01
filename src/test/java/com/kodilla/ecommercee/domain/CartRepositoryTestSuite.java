@@ -38,7 +38,7 @@ public class CartRepositoryTestSuite {
     private Order order;
 
     private void createData() {
-        user = new User(0, "test user", false, 1234, new ArrayList<>(), new ArrayList<>());
+        user = new User(0, "test user", false, new UserKey(), new ArrayList<>(), new ArrayList<>());
         cart = new Cart(0, new ArrayList<>(), user);
     }
 
@@ -48,7 +48,7 @@ public class CartRepositoryTestSuite {
     }
 
     private void prepareDataAndSave() {
-        user = new User(0, "test user", false, 1234, new ArrayList<>(), new ArrayList<>());
+        user = new User(0, "test user", false, new UserKey(), new ArrayList<>(), new ArrayList<>());
         cart = new Cart(0, new ArrayList<>(), user);
         user.addCart(cart);
         userRepository.save(user);
@@ -92,7 +92,7 @@ public class CartRepositoryTestSuite {
         prepareDataAndSave();
 
         //When
-        User newUser = new User(0, "new User", user.isStatus(), user.getUserKey(), user.getCarts(), user.getOrders());
+        User newUser = new User(0, "new User", user.isBlocked(), user.getUserKey(), user.getCarts(), user.getOrders());
         userRepository.save(newUser);
         cart.setUser(newUser);
         cartRepository.save(cart);
